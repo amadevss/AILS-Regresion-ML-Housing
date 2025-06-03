@@ -16,8 +16,13 @@ COPY requirements.txt .
 # Instalar dependencias de Python
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Crear directorios necesarios
+RUN mkdir -p app/static templates
+
 # Copiar el resto de la aplicación
-COPY . .
+COPY app/ app/
+COPY templates/ templates/
+COPY static/ app/static/
 
 # Exponer el puerto que usará la aplicación
 EXPOSE 8000

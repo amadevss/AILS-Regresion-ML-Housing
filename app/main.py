@@ -17,7 +17,7 @@ from ucimlrepo import fetch_ucirepo
 app = FastAPI()
 
 # Montar archivos estáticos y templates
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 def fig_to_base64(fig):
