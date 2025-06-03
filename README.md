@@ -86,6 +86,19 @@ docker rm gait-regresion
 
 ---
 
+### 4. Usar la imagen desde Docker Hub
+
+Puedes descargar y ejecutar la imagen directamente desde Docker Hub:
+
+```bash
+docker pull brychxpin/gait-regresion-app:latest
+docker run -d -p 8000:8000 --name gait-regresion brychxpin/gait-regresion-app:latest
+```
+
+Repositorio oficial en Docker Hub: [https://hub.docker.com/repository/docker/brychxpin/gait-regresion-app/general](https://hub.docker.com/repository/docker/brychxpin/gait-regresion-app/general)
+
+---
+
 ## Estructura del Proyecto
 
 ```
@@ -121,5 +134,6 @@ docker rm gait-regresion
 - El entorno virtual y archivos temporales están correctamente ignorados en el repositorio.
 - El contenedor Docker utiliza Python 3.9 para máxima compatibilidad.
 - El dataset se carga automáticamente desde UCI ML Repo.
+- Imagen oficial en Docker Hub: [https://hub.docker.com/repository/docker/brychxpin/gait-regresion-app/general](https://hub.docker.com/repository/docker/brychxpin/gait-regresion-app/general)
 
 ¿Dudas o problemas? ¡Abre un issue o contacta al autor! 
