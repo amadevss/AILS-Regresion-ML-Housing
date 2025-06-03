@@ -17,47 +17,74 @@ Este proyecto realiza un análisis de regresión completo sobre el dataset Multi
 - Python 3.9+
 - Docker (opcional)
 
-## Instalación
+---
 
-### Usando pip
+## Instalación y Ejecución
 
-1. Clonar el repositorio:
+### 1. Clonar el repositorio
+
 ```bash
 git clone <url-del-repositorio>
 cd <nombre-del-directorio>
 ```
 
-2. Crear un entorno virtual (opcional pero recomendado):
+---
+
+### 2. Ejecución en entorno local (sin Docker)
+
+#### a) Crear y activar entorno virtual
+
 ```bash
-python -m venv venv
-source venv/bin/activate  # En Windows: venv\Scripts\activate
+python3.9 -m venv venv
+source venv/bin/activate
 ```
 
-3. Instalar dependencias:
+#### b) Instalar dependencias
+
 ```bash
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### Usando Docker
+#### c) Ejecutar la aplicación
 
-1. Construir la imagen:
-```bash
-docker build -t gait-analysis .
-```
-
-2. Ejecutar el contenedor:
-```bash
-docker run -p 8000:8000 gait-analysis
-```
-
-## Uso
-
-1. Iniciar el servidor:
 ```bash
 uvicorn app.main:app --reload
 ```
 
-2. Abrir el navegador en `http://localhost:8000`
+Luego abre tu navegador en [http://localhost:8000](http://localhost:8000)
+
+---
+
+### 3. Ejecución usando Docker
+
+#### a) Construir la imagen
+
+```bash
+docker build -t gait-regresion-app .
+```
+
+#### b) Ejecutar el contenedor mapeando el puerto 8000
+
+```bash
+docker run -d -p 8000:8000 --name gait-regresion gait-regresion-app
+```
+
+- La aplicación estará disponible en [http://localhost:8000](http://localhost:8000)
+- Para ver los logs del contenedor:
+
+```bash
+docker logs gait-regresion
+```
+
+- Para detener y eliminar el contenedor:
+
+```bash
+docker stop gait-regresion
+docker rm gait-regresion
+```
+
+---
 
 ## Estructura del Proyecto
 
@@ -70,6 +97,8 @@ uvicorn app.main:app --reload
 │   └── index.html
 ├── requirements.txt
 ├── Dockerfile
+├── .dockerignore
+├── .gitignore
 └── README.md
 ```
 
@@ -83,4 +112,14 @@ uvicorn app.main:app --reload
 - Seaborn
 - Scikit-learn
 - LazyPredict
-- UCI ML Repository API 
+- UCI ML Repository API
+
+---
+
+## Notas
+
+- El entorno virtual y archivos temporales están correctamente ignorados en el repositorio.
+- El contenedor Docker utiliza Python 3.9 para máxima compatibilidad.
+- El dataset se carga automáticamente desde UCI ML Repo.
+
+¿Dudas o problemas? ¡Abre un issue o contacta al autor! 
